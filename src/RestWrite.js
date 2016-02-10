@@ -319,8 +319,11 @@ RestWrite.prototype.transformUser = function() {
     // Check for username uniqueness
     if (!this.data.username) {
       if (!this.query) {
-        // TODO: what's correct behavior here
-        this.data.username = '';
+        var randomUsername = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for(var i = 0; i < 5; i++ )
+          randomUsername += possible.charAt(Math.floor(Math.random() * possible.length));
+        this.data.username = randomUsername;
       }
       return;
     }
